@@ -1,0 +1,55 @@
+        {% load static %}
+
+<nav class="w-full flex justify-between items-center py-3 px-4 fixed z-50">
+
+    <div class="w-6/12">
+        <a href="/"> <img class="w-5/12 w-[185px] h-[50px]" src="{% static 'images/logo.png' %}">  </a>
+    </div>
+         
+    <div class="w-6/12 flex flex-nowrap justify-end">
+        {% if user.is_authenticated %}
+        <div class="mr-2">
+
+            <form method="get" action="{% url 'streaming:pesquisafilme' %}">
+                <input type="text" class="py-1 px-2 rounded-md text-black bg-white" name="query" value="{{ request.GET.query }}" placeholder="Pesquisar...">
+                <input type="submit" value="">
+            </form>
+
+        </div>
+        {% endif %}
+
+        <div class="mr-2">
+        {% if user.is_authenticated %}
+            <a href="{% url 'streaming:logout' %}">
+                    <button class="bg-red-600 text-white py-1 px-3 rounded-md"> Sair </button>
+            </a>
+        {% else %}
+            <form method="post" action="{% url 'streaming:login' %}">
+            {% csrf_token %}
+                    <button class="bg-red-600 text-white py-1 px-3 rounded-md" type="submit">Entrar</button>
+            </form>
+        {% endif %}
+        </div>
+
+
+        {% if user.is_authenticated %}
+        <div class="mr-2">
+            <a href="{% url 'streaming:editarperfil' user.pk %}"> 
+            <button class="bg-red-600 text-white py-1 px-3 rounded-md"> Editar Perfil </button>
+            </a>
+        </div> 
+        {% endif %}
+            
+        {% if user.is_authenticated %}
+        <div class="mr-2">
+            <a href="{% url 'streaming:categoria' %}"> 
+            <button class="bg-red-600 text-white py-1 px-3 rounded-md"> Todas Categorias </button>
+            </a>
+        </div> 
+        {% endif %}
+
+    </div>
+
+
+</nav>
+

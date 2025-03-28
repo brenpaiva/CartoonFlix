@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CartoonFlix: Categorias{% endblock %}
+
+{% block head %}
+  
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="bg-primary_black min-h-screen w-full">
+
+    <!-- Seção Nostalgia -->
+    <section class="bg-primary_black flex justify-center py-10" id="nostalgia">
+        <div class="p-8 w-10/12 relative mt-12">
+            <h2 class="text-gray-200 text-2xl font-medium">Nostalgia</h2>
+            <div class="wrapper">
+
+              
+                <section id="section1Nostalgia" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section2Nostalgia" class="arrow__btn text-6xl page">‹</a>
+
+                    {% for filme in filmes_nostalgia %}
+                        {% if forloop.counter <= 4 %}
+                        <div class="item h-64 w-1/7 m-4 text-center font-bold">
+                            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+                                <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+                            </a>
+                            <p class="text-white">{{ filme.titulo }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <a href="#section2Nostalgia" class="arrow__btn text-6xl">›</a>
+                </section>
+
+                {% if filmes_nostalgia|length > 4 %}
+                <section id="section2Nostalgia" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section1Nostalgia" class="arrow__btn text-6xl">‹</a>
+
+                    {% for filme in filmes_nostalgia %}
+                        {% if forloop.counter > 4 %}
+                        <div class="item h-64 w-1/7 m-4 text-center font-bold">
+                            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+                                <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+                            </a>
+                            <p class="text-white">{{ filme.titulo }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <a href="#section1Nostalgia" class="arrow__btn text-6xl">›</a>
+                </section>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Infantil -->
+    <section class="bg-primary_black flex justify-center py-10" id="infantil">
+        <div class="p-8 w-10/12 relative">
+            <h2 class="text-gray-200 text-2xl font-medium">Infantil</h2>
+            <div class="wrapper">
+
+            
+                <section id="section1Infantil" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section2Infantil" class="arrow__btn text-6xl page">‹</a>
+
+                    {% for filme in filmes_infantil %}
+                        {% if forloop.counter <= 4 %}
+                        <div class="item h-64 w-1/7 m-4 text-center font-bold">
+                            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+                                <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+                            </a>
+                            <p class="text-white">{{ filme.titulo }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <a href="#section2Infantil" class="arrow__btn text-6xl">›</a>
+                </section>
+
+                {% if filmes_infantil|length > 4 %}
+                <section id="section2Infantil" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section1Infantil" class="arrow__btn text-6xl">‹</a>
+
+                    {% for filme in filmes_infantil %}
+                        {% if forloop.counter > 4 %}
+                        <div class="item h-64 w-1/7 m-4 text-center font-bold">
+                            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+                                <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+                            </a>
+                            <p class="text-white">{{ filme.titulo }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <a href="#section1Infantil" class="arrow__btn text-6xl">›</a>
+                </section>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Clássico -->
+    <section class="bg-primary_black flex justify-center py-10" id="classico">
+        <div class="p-8 w-10/12 relative">
+            <h2 class="text-gray-200 text-2xl font-medium">Clássico</h2>
+            <div class="wrapper">
+
+     
+                <section id="section1Classico" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section2Classico" class="arrow__btn text-6xl page">‹</a>
+
+                    {% for filme in filmes_classico %}
+                        {% if forloop.counter <= 4 %}
+                        <div class="item h-64 w-1/7 m-4 text-center font-bold">
+                            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+                                <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+                            </a>
+                            <p class="text-white">{{ filme.titulo }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <a href="#section2Classico" class="arrow__btn text-6xl">›</a>
+                </section>
+
+          
+                {% if filmes_classico|length > 4 %}
+                <section id="section2Classico" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section1Classico" class="arrow__btn text-6xl">‹</a>
+
+                    {% for filme in filmes_classico %}
+                        {% if forloop.counter > 4 %}
+                        <div class="item h-64 w-1/7 m-4 text-center font-bold">
+                            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+                                <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+                            </a>
+                            <p class="text-white">{{ filme.titulo }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <a href="#section1Classico" class="arrow__btn text-6xl">›</a>
+                </section>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Aventura -->
+    <section class="bg-primary_black flex justify-center py-10" id="aventura">
+        <div class="p-8 w-10/12 relative">
+            <h2 class="text-gray-200 text-2xl font-medium">Aventura</h2>
+            <div class="wrapper">
+
+
+                <section id="section1Aventura" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section2Aventura" class="arrow__btn text-6xl page">‹</a>
+
+                    {% for filme in filmes_aventura %}
+                        {% if forloop.counter <= 4 %}
+                        <div class="item h-64 w-1/7 m-4 text-center font-bold">
+                            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+                                <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+                            </a>
+                            <p class="text-white">{{ filme.titulo }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <a href="#section2Aventura" class="arrow__btn text-6xl">›</a>
+                </section>
+
+                {% if filmes_aventura|length > 4 %}
+                <section id="section2Aventura" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section1Aventura" class="arrow__btn text-6xl">‹</a>
+
+                    {% for filme in filmes_aventura %}
+                        {% if forloop.counter > 4 %}
+                        <div class="item h-64 w-1/7 m-4 text-center font-bold">
+                            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+                                <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+                            </a>
+                            <p class="text-white">{{ filme.titulo }}</p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <a href="#section1Aventura" class="arrow__btn text-6xl">›</a>
+                </section>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}

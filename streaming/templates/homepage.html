@@ -1,0 +1,72 @@
+<!---->{% extends 'base.html' %}
+<!---->{% load crispy_forms_tags %}
+<!---->{% load static %}
+<!---->{% block title %} CartoonFlix: assista cartoons!{% endblock %}
+        
+<!---Inicio Bloco de conteúdo ---->{% block content %}
+
+<header class="relative min-h-screen showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-25 before:grayscale before:bg-cover before:bg-center before:[background-image:url('{% static 'images/background.jpg' %}')]">
+    <div class="relative z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
+        <h1 class="font-semibold text-4xl md:text-5xl w-10/12 md:w-3/4 text-center text-yellow-300"> Reviva sua infância com os melhores desenhos - só no Cartoonflix! </h1>
+        <h3 class="text-xl md:text-xl py-5">🎬 Assista onde quiser. Cancele quando quiser.</h3>
+        <h4 class="text-sm md:text-lg pb-3"> Quer começar? Coloque seu e-mail abaixo para acessar. </h4>
+        <div class="w-full flex justify-center">
+
+            <div class="flex justify-center items-center w-11/12 md:w-10/12">
+
+             
+                  
+                    <div class="flex items-stretch w-6/12 justify-center">
+                        <input type="email" class="p-2 flex-grow bg-white text-black" placeholder="Insira seu e-mail"> 
+                        <a href="{% url 'streaming:login' %}">  
+                        <button class="bg-red-600 font-medium md:font-normal flex justify-center items-center py-2 px-3 md:px-0 rounded-br-sm rounded-tr-sm md:text-2xl" type="submit">
+                            <span class="px-3"> Acessar</span>
+                            <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
+                        </button>
+                        </a>
+                    </div>
+              
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh;">
+    <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10 ">
+        <h2 class="md:text-5xl text-4xl font-semibold mb-4"> Assista na sua TV</h2>
+        <h5 class="md:text-xl text-lg">Assista seus desenhos direto na Smart TV, Playstation, Xbox, Chromecast, Apple TV, Blu-ray e até naquela TV grandona da sala. É só dar o play e aproveitar!</h5>
+    </div>
+    <div class='md:w-1/2 flex justify-center items-center'>
+        <img src="{% static 'images/tv.png' %}" class="w-8/12" alt="">
+    </div>
+</section>
+
+
+<section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh;">
+    <div class='md:w-1/2 flex justify-center items-center '>
+        <img src="{% static 'images/mobile.jpg' %}" class="w-8/12" alt="">
+    </div>
+
+    <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10">
+        <h2 class="md:text-5xl text-4xl font-semibold mb-4">Baixe e assista quando quiser</h2>
+        <h5 class="md:text-xl text-lg">Salve seus desenhos favoritos no app e assista mesmo sem internet. Assim, a diversão te acompanha em qualquer lugar!</h5>
+    </div>
+</section>
+
+
+<section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh;">
+    <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10">
+        <h2 class="md:text-5xl text-4xl font-semibold mb-4"> Perfis só para as crianças </h2>
+        <h5 class="md:text-xl text-lg">Deixe os pequenos embarcarem em aventuras com seus personagens favoritos, num espaço feito só pra eles — e o melhor: incluso na sua assinatura!</h5>
+    </div>
+    <div class='md:w-1/2 flex justify-center items-center'>
+        <img src="{% static 'images/kid.png' %}" class="w-8/12" alt="">
+    </div>
+</section>
+
+
+<!-----Fim bloco de conteúdo----->{% endblock %}
+
+

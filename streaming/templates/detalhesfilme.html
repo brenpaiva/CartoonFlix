@@ -1,0 +1,98 @@
+<!---->{% extends 'base.html' %}
+       {% load static %}
+<!---->{% block title %} CartoonFlix: assista cartoons!{% endblock %}
+
+<!---->{% block content %}
+
+
+<main class='bg-primary_black min-h-screen w-full'>
+
+    <section
+      class="relative px-4 min-h-screen showcase border-gray-600 border-b-8 flex items-center
+             before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-20
+             before:grayscale before:bg-cover before:bg-center
+             before:[background-image:url('{% static 'images/background2.jpg' %}')]"  >
+      
+      <div class="relative z-10 flex flex-col md:flex-row justify-between w-full">
+
+        
+        <div class="max-w-xl p-4">
+          <h2 class="text-6xl font-semibold text-white my-4">{{ object.titulo }}</h2>
+          <p class="w-11/12 md:w-10/12 font-medium text-white my-4 text-justify">
+            {{ object.descricao }}
+          </p>
+          <div class="flex my-4">
+            <a href="{{ object.episodios.first.video }}">
+              <button class="flex items-center bg-white py-2 px-5 rounded-md text-black">
+                <ion-icon name="play" class="text-2xl"></ion-icon>
+                <span class="ml-3 font-medium">Play</span>
+              </button>
+            </a>
+          </div>
+        </div>
+
+        
+        <div class="flex justify-center items-center py-0">
+          <img
+            src="{{ object.thumb.url }}"
+            alt="{{ object.titulo }}"
+            class="w-64 h-auto object-cover rounded-md shadow-lg"
+          />
+        </div>
+
+      </div>
+    </section>
+
+    <section class="bg-primary_black flex justify-center py-12">
+      <div class="w-10/12 relative text-gray-100 space-y-8">
+
+        <header>
+          <h2 class="text-3xl font-semibold">Descrição</h2>
+        </header>
+
+
+        <p class="text-lg leading-relaxed">
+          {{ object.descricao }}
+          <br>
+          <span class="text-sm text-gray-400">
+            Visualizações: {{ object.visualizacoes }}
+          </span>
+        </p>
+
+     
+        <div>
+          <h3 class="text-2xl font-semibold mb-4">Episódios</h3>
+          <ul class="space-y-2">
+            {% for episodio in object.episodios.all %}
+              <li>
+                <a href="{{ episodio.video }}" class="text-lg text-blue-400 hover:underline hover:text-blue-300 transition-colors">
+                    🎬 Episódio {{ forloop.counter }}: {{ episodio.titulo }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class='bg-primary_black flex justify-center py-10'>
+      <div class="p-8 w-10/12 relative">
+        <h2 class="text-gray-200 text-2xl font-medium">Relacionados</h2>
+        <div class="flex flex-wrap items-center min-w-full movie_lis">
+          {% for filme in filmes_relacionados %}
+          <div class="item h-64 w-1/7 m-4 text-center font-bold">
+            <a href="{% url 'streaming:detalhesfilme' filme.id %}">
+              <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-contain">
+            </a>
+            <p>{{ filme.titulo }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+</main>
+
+
+<!---->{% endblock %}
+
