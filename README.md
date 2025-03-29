@@ -18,23 +18,6 @@ Permite listagem, visualização de detalhes, contagem de visualizações e pesq
 - Destaque para lançamentos e mais assistidos
 - Layout dinâmico com dados injetados por context processors
 
----
-
-## 📸 Demonstração
-
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-
----
-
-## 📚 Tabela de Conteúdos
-
-
----
-
-## 🛠️ Instalação
 
 ### Pré-requisitos
 
